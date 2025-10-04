@@ -1,0 +1,18 @@
+{
+  "display": {
+      "title": "LeaderBoards",
+      "description": "Leaderboards from scoreboards v4.0",
+      "icon": {
+          "id": "minecraft:player_head",
+          "components": {"minecraft:profile": "DJT3"}
+      },
+      "show_toast": false,
+      "announce_to_chat": false
+  },
+  "parent": "global:root",
+  "criteria": {
+      "trigger": {
+          "trigger": "minecraft:tick"
+      }
+  }
+}
