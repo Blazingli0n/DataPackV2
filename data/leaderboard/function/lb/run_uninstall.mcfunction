@@ -23,6 +23,8 @@ data remove storage leaderboard:line value_0
 data remove storage leaderboard:line value_1
 data remove storage leaderboard:line value_2
 data remove storage leaderboard:line value_3
+data remove storage leaderboard:line money_whole
+data remove storage leaderboard:line money_cents
 data remove storage leaderboard:line billboard
 data remove storage leaderboard:line see_through
 data remove storage leaderboard:line bright
@@ -68,6 +70,7 @@ data remove storage leaderboard:init_edit center_init
 data remove storage leaderboard:init_edit time_mode_0_init
 data remove storage leaderboard:init_edit time_mode_1_init
 data remove storage leaderboard:init_edit time_mode_2_init
+data remove storage leaderboard:init_edit time_mode_3_init
 
 data remove storage leaderboard:temp_player close_player
 data remove storage leaderboard:temp_player player
