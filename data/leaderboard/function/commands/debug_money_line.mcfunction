@@ -12,11 +12,6 @@ scoreboard players set #int.money_debug_value leaderboard 0
 scoreboard players set #int.money_debug_whole leaderboard 0
 scoreboard players set #int.money_debug_cents leaderboard 0
 
-# Sync the readable fake holder with the live entity score when possible so the
-# debug output reflects selector-based updates too.
-execute if entity @a[name='$(player)',limit=1] run scoreboard players add $(player) money 0
-execute if entity @a[name='$(player)',limit=1] run scoreboard players operation $(player) money = @a[name='$(player)',limit=1] money
-
 execute store success score #bool.money_debug_has_score leaderboard run scoreboard players get $(player) money
 execute if score #bool.money_debug_has_score leaderboard matches 0 run scoreboard players add $(player) money 0
 execute store result score #int.money_debug_value leaderboard run scoreboard players get $(player) money
