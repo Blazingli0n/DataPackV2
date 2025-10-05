@@ -4,7 +4,9 @@
  #
  # Created by DJT3.
 ##
-execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} as @s run function leaderboard:lb/build_time_values with storage leaderboard:line
+execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:1}} as @s run function leaderboard:lb/build_time_values with storage leaderboard:line
+execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:2}} as @s run function leaderboard:lb/build_time_values with storage leaderboard:line
+execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} as @s run function leaderboard:lb/build_money_values with storage leaderboard:line
 data modify storage leaderboard:line color set value "white"
 $execute if data storage leaderboard:leaderboard_nbt {data:{medal_color:1}} if score #const.1 leaderboard matches $(rank) run data modify storage leaderboard:line color set value "#D6AF36"
 $execute if data storage leaderboard:leaderboard_nbt {data:{medal_color:1}} if score #const.2 leaderboard matches $(rank) run data modify storage leaderboard:line color set value "#A7A7AD"
