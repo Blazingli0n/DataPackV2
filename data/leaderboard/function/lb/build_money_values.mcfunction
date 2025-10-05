@@ -4,28 +4,17 @@
  #
  # Created by DJT3.
 ##
-scoreboard players set #bool.money_has_score leaderboard 0
-scoreboard players set #bool.value_is_negative leaderboard 0
-scoreboard players set #int.money_value leaderboard 0
-scoreboard players set #int.money_cents leaderboard 0
-scoreboard players set #int.money_whole leaderboard 0
+$execute store result score #int.money_value leaderboard run scoreboard players get $(name) $(score)
 
-data modify storage leaderboard:line money_whole set value 0
-data modify storage leaderboard:line money_cents set value 0
+execute unless score #int.money_value leaderboard matches 0.. run scoreboard players set #bool.value_is_negative leaderboard 1
+execute if score #int.money_value leaderboard matches 0.. run scoreboard players set #bool.value_is_negative leaderboard 0
+execute unless score #int.money_value leaderboard matches 0.. run scoreboard players operation #int.money_value leaderboard *= #const.-1 leaderboard
 
-execute store success score #bool.money_has_score leaderboard run scoreboard players get $(name) $(score)
-execute if score #bool.money_has_score leaderboard matches 1 run execute store result score #int.money_value leaderboard run scoreboard players get $(name) $(score)
+scoreboard players operation #int.money_cents leaderboard = #int.money_value leaderboard
+scoreboard players operation #int.money_cents leaderboard %= #const.100 leaderboard
 
-execute if score #bool.money_has_score leaderboard matches 1 unless score #int.money_value leaderboard matches 0.. run scoreboard players set #bool.value_is_negative leaderboard 1
-execute if score #bool.money_has_score leaderboard matches 1 if score #int.money_value leaderboard matches 0.. run scoreboard players set #bool.value_is_negative leaderboard 0
-execute if score #bool.money_has_score leaderboard matches 1 unless score #int.money_value leaderboard matches 0.. run scoreboard players operation #int.money_value leaderboard *= #const.-1 leaderboard
+scoreboard players operation #int.money_whole leaderboard = #int.money_value leaderboard
+scoreboard players operation #int.money_whole leaderboard /= #const.100 leaderboard
 
-execute if score #bool.money_has_score leaderboard matches 1 run scoreboard players operation #int.money_cents leaderboard = #int.money_value leaderboard
-execute if score #bool.money_has_score leaderboard matches 1 run scoreboard players operation #int.money_cents leaderboard %= #const.100 leaderboard
-
-execute if score #bool.money_has_score leaderboard matches 1 run scoreboard players operation #int.money_whole leaderboard = #int.money_value leaderboard
-execute if score #bool.money_has_score leaderboard matches 1 run scoreboard players operation #int.money_whole leaderboard /= #const.100 leaderboard
-
-execute if score #bool.money_has_score leaderboard matches 1 run execute store result storage leaderboard:line money_whole int 1 run scoreboard players get #int.money_whole leaderboard
-execute if score #bool.money_has_score leaderboard matches 1 run execute store result storage leaderboard:line money_cents int 1 run scoreboard players get #int.money_cents leaderboard
-
+execute store result storage leaderboard:line money_whole int 1 run scoreboard players get #int.money_whole leaderboard
+execute store result storage leaderboard:line money_cents int 1 run scoreboard players get #int.money_cents leaderboard
