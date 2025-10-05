@@ -28,14 +28,19 @@ $execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:1}} if sco
 $execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:1}} if score #int.value_3 leaderboard >= #const.1 leaderboard if score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_3)h $(value_2)m $(value_1)s","color":"red"}
 
 # Xm Xs XXms
-$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} if score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard unless score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_2)m $(value_1).$(value_0)s","color":"red"}
+$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} unless data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} if score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard unless score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_2)m $(value_1).$(value_0)s","color":"red"}
 # Xm Xs 0Xms
-$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} if score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard if score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_2)m $(value_1).0$(value_0)s","color":"red"}
+$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} unless data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} if score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard if score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_2)m $(value_1).0$(value_0)s","color":"red"}
 
 # Xs XXms
-$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} unless score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard unless score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_1).$(value_0)s","color":"red"}
+$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} unless data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} unless score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard unless score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_1).$(value_0)s","color":"red"}
 # Xs 0Xms
-$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} unless score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard if score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_1).0$(value_0)s","color":"red"}
+$execute unless data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} unless data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} unless score #int.value_2 leaderboard >= #const.1 leaderboard unless score #int.value_3 leaderboard >= #const.1 leaderboard if score #const.5 leaderboard >= #int.value_0 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value_1).0$(value_0)s","color":"red"}
+
+# Money
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(money_whole).","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} if score #int.money_cents leaderboard < #const.10 leaderboard run data modify storage leaderboard:line_nbt text.extra append value {"text":"0","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:3}} run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(money_cents)","color":"red"}
 
 data modify entity @s text set from storage leaderboard:line_nbt text
 
