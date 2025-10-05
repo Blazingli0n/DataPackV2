@@ -5,6 +5,7 @@
  # Created by DJT3.
 ##
 scoreboard objectives add leaderboard dummy
+scoreboard objectives add money dummy "Money"
 
 scoreboard players set #const.-1 leaderboard -1
 scoreboard players set #const.1 leaderboard 1

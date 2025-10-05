@@ -7,6 +7,7 @@
 kill @e[type=text_display,tag=leaderboard]
 
 scoreboard objectives remove leaderboard
+scoreboard objectives remove money
 
 data remove storage leaderboard:temp_namelist names
 data remove storage leaderboard:temp_namelist max_id
